@@ -1,4 +1,3 @@
-# 🚀 Swagger URL: https://skillsync-ai-backend-production.up.railway.app/swagger-ui/index.html
 
 # 🚀 SkillSync AI
 
@@ -93,19 +92,6 @@ SkillSync AI reimagines the hiring pipeline with AI at every stage:
 | Axios | 1.13 | HTTP client |
 | Framer Motion | 12.33 | Animations & transitions |
 | React Hot Toast | 2.6 | Toast notifications |
-
-### Infrastructure
-| Technology | Purpose |
-|---|---|
-| Docker + Docker Compose | Containerization |
-| Kubernetes | Orchestration (optional) |
-| Nginx | Frontend static serving |
-| PostgreSQL + pgvector | Database + vector store |
-| MinIO | S3-compatible object storage |
-| Ollama | Local LLM inference (fallback) |
-| OpenRouter | Cloud AI model routing |
-
----
 
 ## 🗂️ Entity Relationship (ER) Diagram
 
@@ -423,37 +409,6 @@ sequenceDiagram
 
 ---
 
-## �🚢 Deployment Architecture
-
-### Docker Compose (Full Stack)
-
-| Service      | Image / Build                | Port   |
-|-------------|------------------------------|--------|
-| **postgres** | `pgvector/pgvector:pg16`     | `5454` |
-| **backend**  | Multi-stage Maven + Corretto 21 | `9090` |
-| **ollama**   | `ollama/ollama:latest`       | `11434`|
-| **minio**    | `minio/minio:latest`         | `9000` |
-| **frontend** | Multi-stage Node 20 + Nginx  | `5173` |
-
-- Backend waits for PostgreSQL health check before starting
-- Persistent volumes for PostgreSQL data and Ollama models
-- Environment variables injected from `.env` file
-
-### Kubernetes
-K8s manifests provided for:
-- `postgres.yaml` — PostgreSQL StatefulSet with PVC
-- `backend.yaml` — Spring Boot Deployment + Service
-- `frontend.yaml` — Nginx-served React app + Service
-
-### Cloud Deployment
-For step-by-step instructions on deploying the full stack to Railway, see:
-👉 **[RAILWAY_DEPLOY.md](RAILWAY_DEPLOY.md)**
-
-- **Frontend**: Deployable to **Vercel** or **Railway** (static build output from Vite)
-- **Backend**: Containerized with multi-stage Dockerfile (Amazon Corretto 21 Alpine)
-
----
-
 ## 🧠 AI Architecture
 
 ### Resume Parsing
@@ -496,14 +451,7 @@ Every AI call follows a **primary → fallback** pattern:
 > Base URL: `http://localhost:9090/api`
 > All endpoints except those marked 🌐 (Public) require a valid JWT token in the `Authorization: Bearer <token>` header.
 
----
-
-### 🔐 Authentication
-
-| Method | Endpoint | Role | Description |
-|--------|----------|------|-------------|
-| `POST` | `/api/auth/login` | 🌐 Public | Authenticate with email and password; returns JWT token and user details |
-
+--
 ---
 
 ### 👤 Users
@@ -740,41 +688,3 @@ This starts:
 - **Evaluation resilience**: JSON parsing of AI responses includes fallback defaults if malformed
 
 ---
-
-## 🔮 Future Enhancements
-
-- [ ] Real-time chat between recruiters and candidates (WebSocket)
-- [ ] Video interview integration (WebRTC)
-- [ ] Advanced analytics dashboard with hiring funnel metrics
-- [ ] Resume builder with AI suggestions
-- [ ] Multi-language support for global hiring
-- [ ] OAuth 2.0 social login (Google, LinkedIn)
-- [ ] Swagger/OpenAPI documentation endpoint
-- [x] S3/MinIO integration for cloud resume storage (Completed)
-- [ ] Rate limiting and API throttling
-- [ ] Candidate skill assessment modules
-
----
-
-## 🎬 Demo Video
-
-> 📹 [Watch the demo video](#) *(link to be added)*
-
----
-
-## 👨‍💻 Author & Credits
-
-**Prathamesh Patil**
-
-Built as part of the **CodingShuttle Hackathon** — AI-Powered Online Hiring Platform.
-
-| | |
-|---|---|
-| **GitHub** | [Prathamesh36](https://github.com/Prathamesh36) |
-| **Project** | [SkillSync-AI](https://github.com/Prathamesh36/SkillSync-AI) |
-
----
-
-<p align="center">
-  Built with ☕ Spring Boot, ⚛️ React, and 🤖 Spring AI
-</p>
