@@ -49,7 +49,6 @@ SkillSync AI reimagines the hiring pipeline with AI at every stage:
 - [🗂️ Entity Relationship (ER) Diagram](#️-entity-relationship-er-diagram)
 - [🔄 System Flow](#-system-flow)
 - [🏗️ System Architecture](#️-system-architecture)
-- [🚢 Deployment Architecture](#-deployment-architecture)
 - [🧠 AI Architecture](#-ai-architecture)
 - [📡 API Documentation](#-api-documentation)
 - [🖥️ Local Setup Instructions](#️-local-setup-instructions)
@@ -57,9 +56,6 @@ SkillSync AI reimagines the hiring pipeline with AI at every stage:
 - [🔐 Environment Variables](#-environment-variables)
 - [🔒 Security Implementation](#-security-implementation)
 - [🛡️ AI Resilience Strategy](#️-ai-resilience-strategy)
-- [🔮 Future Enhancements](#-future-enhancements)
-- [🎬 Demo Video](#-demo-video)
-- [👨‍💻 Author & Credits](#-author--credits)
 
 ---
 ## 🛠️ Tech Stack
